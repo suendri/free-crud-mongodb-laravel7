@@ -52,8 +52,9 @@
                             <div class="col-sm-10">
                                 <input class="form-control @error('password')is-invalid @enderror" type="password"
                                     name="password" placeholder="Password">
+                                    <small class="form-text text-muted mt-2">Kosongkan jika tidak ingin mengubah Password</small>
 
-                                @error('password')
+                                    @error('password')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
