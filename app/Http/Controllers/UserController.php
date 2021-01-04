@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\User;
 
 class UserController extends Controller
 {
@@ -13,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.index');
     }
 
     /**
@@ -23,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -34,7 +36,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'bail|required|max:50',
+            'email' => 'required|email|unique:users|max:50',
+            'password' => 'required|confirmed|max:50'
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        $request->session()->flash('alert-success', 'Data berhasil disimpan!');
+        return redirect('/dashboard/user');
     }
 
     /**
@@ -45,7 +60,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $row = User::find($id);
+        return view('user.show', compact('row'));
     }
 
     /**
@@ -56,7 +72,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $row = User::findOrFail($id);
+        return view('user.edit', compact('row'));
     }
 
     /**
@@ -68,7 +85,38 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'bail|required|max:50',
+            'email' => 'required|email|max:50',
+            'password' => 'nullable|confirmed|max:50'
+        ]);
+
+        $row = User::findOrFail($id);
+        $any = User::where([
+            ['email', '=', $request->email],
+            ['_id', '<>', $id]
+        ])->first();
+
+        if ($row != null && $any === null) {
+            if (!empty($request->password)) {
+                $row->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password)
+                ]);
+                $request->session()->flash('alert-success', 'Data berhasil diperbarui dengan perubahan password!');
+            } else {
+                $row->update([
+                    'name' => $request->name,
+                    'email' => $request->email
+                ]);
+                $request->session()->flash('alert-success', 'Data berhasil diperbarui tanpa perubahan password!');
+            }
+        } else {
+            $request->session()->flash('alert-warning', 'Data gagal diperbarui!');
+        }
+
+        return redirect('/dashboard/user');
     }
 
     /**
@@ -77,8 +125,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $row = User::findOrFail($id);
+        $row->delete();
+
+        $request->session()->flash('alert-success', 'Data berhasil dihapus!');
+        return redirect('/dashboard/user');
     }
 }

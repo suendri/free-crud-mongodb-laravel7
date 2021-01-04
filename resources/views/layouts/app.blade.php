@@ -168,7 +168,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ url('/dashboard/profile') }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -206,8 +206,7 @@
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; 2020</span>
-                        <div class="my-2">Gosoftware Media</div>
-                        <div>Template by SB Admin 2</div>
+                        <div class="my-2">Template by SB Admin 2</div>
                     </div>
                 </div>
             </footer>

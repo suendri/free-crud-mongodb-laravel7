@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-body">
 
-                    <form method="POST" action="{{ url('/dashboard/mahasiswa') }}" method="POST">
+                    <form method="POST" action="{{ url('/dashboard/mahasiswa') }}">
                         @csrf
                         <div class="form-group row">
                             <label class="col-sm-2">NIM</label>

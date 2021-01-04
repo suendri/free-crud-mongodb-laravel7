@@ -8,15 +8,15 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 mb-2 mb-lg-0">Mahasiswa</h1>
-        <a href="{{ url('/dashboard/mahasiswa/create') }}"
+        <h1 class="h3 mb-0 text-gray-800 mb-2 mb-lg-0">User</h1>
+        <a href="{{ url('/dashboard/user/create') }}"
             class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
+                class="fas fa-plus fa-sm text-white-50"></i> Tambah User</a>
     </div>
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data User</h6>
         </div>
         <div class="card-body">
 
@@ -46,30 +46,28 @@
                         <table class="table table-sm table-hover" data-form="dataForm">
                             <tr>
                                 <th>NO</th>
-                                <th>NIM</th>
                                 <th>NAMA</th>
-                                <th>ALAMAT</th>
+                                <th>EMAIL</th>
                                 <th></th>
                             </tr>
                             @foreach ($rows as $row)
                                 <tr>
                                     <td>{{ $rows->perPage() * ($rows->currentPage() - 1) + $loop->iteration }}</td>
-                                    <td>{{ $row->mhsw_nim }}</td>
-                                    <td>{{ $row->mhsw_nama }}</td>
-                                    <td>{{ $row->mhsw_alamat }}</td>
+                                    <td>{{ $row->name }}</td>
+                                    <td>{{ $row->email }}</td>
                                     <td>
                                         <div class="d-flex float-right">
-                                            <a href="{{ url('/dashboard/mahasiswa/' . $row->_id) }}"
+                                            <a href="{{ url('/dashboard/user/' . $row->_id) }}"
                                                 class="btn btn-sm btn-info">
                                                 <i class="fa fa-info-circle"></i>
                                                 <span class="d-none d-lg-inline">DETAIL</span>
                                             </a>
-                                            <a href="{{ url('/dashboard/mahasiswa/' . $row->_id . '/edit') }}"
+                                            <a href="{{ url('/dashboard/user/' . $row->_id . '/edit') }}"
                                                 class="btn btn-sm btn-warning ml-2">
                                                 <i class="fa fa-edit"></i>
                                                 <span class="d-none d-lg-inline">EDIT</span>
-                                            </a>                                           
-                                            <form action="{{ url('/dashboard/mahasiswa/' . $row->_id) }}" method="POST"
+                                            </a>                                            
+                                            <form action="{{ url('/dashboard/user/' . $row->_id) }}" method="POST"
                                                 class="delete-confirm">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 @csrf

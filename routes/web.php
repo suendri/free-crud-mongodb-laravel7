@@ -21,7 +21,11 @@ Auth::routes();
 
 Route::prefix('dashboard')->middleware(['web', 'auth'])->group(function () {
 	
-	Route::get('/', 'DashboardController@index');
+    Route::get('/', 'DashboardController@index');
+    Route::get('/profile', 'ProfileController@index');
+    Route::patch('/profile', 'ProfileController@update');
     Route::resource('/mahasiswa', 'MahasiswaController');
+    Route::resource('/user', 'UserController');
+
 
 });
