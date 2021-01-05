@@ -20,7 +20,7 @@
             @endif
 
             {{ __('You are logged in!') }}
-            <div>Create Read Update Delete Laravel 7 using Database Mongodb</div>
+            <div>Create Read Update and Delete Laravel 7 using Database MongoDB</div>
         </div>
     </div>
 
