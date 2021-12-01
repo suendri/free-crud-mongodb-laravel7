@@ -4,16 +4,21 @@ Thanks for your Donation!
 ---------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------
-PULSA   : 0852-6361-6901
 LINKAJA : 0852-6361-6901
-GOPAY   : 0852-6361-6901
 OVO     : 0852-6361-6901
 DANA    : 0852-6361-6901
+GOPAY   : 0852-6361-6901
 PAYPAL  : paypal.me/Suendri
+---------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+MAU FITUR LEBIH LENGKAP?
+Free Create Read Update Delete Laravel 8 using Database Mongodb
+
+https://www.tokopedia.com/gosoftware/gosoftware-crud-menggunakan-laravel-8-dan-mongodb
 ---------------------------------------------------------------------------------------------------
 
 SUENDRI
 
 Gosoftware Media
 http://gosoftware.web.id
-http://phpbego.wordpress.com
